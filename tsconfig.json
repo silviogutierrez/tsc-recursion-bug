@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "target": "es6",
+        "jsx": "react",
+        "skipLibCheck": true
+    },
+    "include": ["./client/**/*"]
+}
