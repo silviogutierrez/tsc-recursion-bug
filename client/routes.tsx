@@ -1,8 +1,29 @@
-import {route} from "./monoroutes";
+import {routeFactory} from "./monoroutes";
+
+const isAuthenticated = () => {
+    // This could check cookies, or localstorage, etc.
+    //
+    // Stub here to illustrate the logic.
+    return true;
+}
+
+const anonymousRoute = routeFactory(() => ({}));
+
+const route = routeFactory(() => {
+    if (isAuthenticated() === false) {
+        // redirect to login
+    }
+    return {
+        profile: {
+            name: "John Smith",
+            age: 15,
+        },
+    };
+});
 
 export const Share = route({
     name: "share",
-    path: "/share/<string:uuid>/",
+    path: "/share2/<string:uuid>/",
 });
 
 export const PasswordReset = route({
@@ -10,13 +31,13 @@ export const PasswordReset = route({
     path: "/reset/",
 });
 
-export const Registration = route({
+export const Registration = anonymousRoute({
     name: "register",
     path: "/register/",
 });
 
 export const Contact = route({
-    name: "contact",
+    name: "contact2",
     path: "/contact/",
 });
 
@@ -55,13 +76,13 @@ export const CreateWidget = route({
 });
 
 export const UpdateWidget = route({
-    name: "update_widget",
+    name: "update_widge",
     path: "widgets/<number:widgetId>/",
     tabs: ["main", "advanced"],
 });
 
-export const UpdateTrinket = route({
-    name: "update_trinket",
+export const UpdateTrinket = UpdateWidget.subroute({
+    name: "update_trinket2",
     path: "trinkets/<number:trinketId>/",
 });
 
