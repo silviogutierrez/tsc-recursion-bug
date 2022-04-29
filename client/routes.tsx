@@ -37,7 +37,7 @@ export const Registration = anonymousRoute({
 });
 
 export const Contact = route({
-    name: "contact2",
+    name: "contact",
     path: "/contact/",
 });
 
@@ -45,7 +45,7 @@ export const Dashboard = route({
     name: "dashboard",
     path: "/dashboard/<string:username>/",
     tabs: ["main", "info", "charts"],
-    resolve: () => Promise.resolve({resultOfApiCall: 1}),
+    // resolve: () => Promise.resolve({resultOfApiCall: 1}),
 });
 
 /*
@@ -60,9 +60,6 @@ export const Dashboard = route({
 export const SubRouteExample = Dashboard.subroute({
     name: "subroute",
     path: "subroute/",
-    resolve: ({resolved}) => {
-
-    },
 });
 
 export const WidgetList = route({
